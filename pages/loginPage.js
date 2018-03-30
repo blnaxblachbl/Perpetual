@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Alert, AsyncStorage, TextInput, Button } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import publicIP from 'react-native-public-ip';
 
 class LoginPage extends Component {
 
@@ -14,6 +15,12 @@ class LoginPage extends Component {
             login: "",
             password: ""
         }
+    }
+
+    componentDidMount() {
+        publicIP().then(ip => {
+            alert(ip);
+        });
     }
 
     render() {
