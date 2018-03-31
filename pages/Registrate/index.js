@@ -36,7 +36,11 @@ class RegistrPage extends Component {
         if (this.state.tel && this.state.password && this.state.confirm && this.state.username) {
             if (this.state.password == this.state.confirm) {
                 gun.get(this.state.tel + '@' + this.state.password).put({ username: this.state.username }, (data) => {
-                    this.navigation.navigate('Main')
+                    if (data != undefined) {
+                        this.navigation.navigate('Main')
+                    } else {
+                        alert("Error - registration error")
+                    }
                 })
             } else {
                 alert("Confirm password")
