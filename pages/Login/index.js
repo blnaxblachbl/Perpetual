@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Image,
     Text,
     View,
     TouchableOpacity,
@@ -26,16 +27,9 @@ class LoginPage extends Component {
     }
 
     render() {
+    
         return (
             <View style={styles.container}>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <View>
-                </View>
-=======
->>>>>>> master
-=======
->>>>>>> master
                 <View style={{ width: "80%" }}>
                     <TouchableOpacity style={styles.containerButton} onPress={this.handleLogin}>
                         <Text style={styles.textButton}>Войти</Text>
