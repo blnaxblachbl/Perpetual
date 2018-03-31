@@ -38,10 +38,11 @@ class LoginPage extends Component {
             const data = await AccessToken.getCurrentAccessToken();
             const accessToken = data.accessToken.toString();
             const userID = data.userID;
-            const request = await axios.get('https://graph.facebook.com/v2.12/me?fields=email,first_name,last_name&access_token=' + accessToken);
+            const request = await axios.get('https://graph.facebook.com/v2.12/me?fields=email,first_name,last_name,picture.width(640)&access_token=' + accessToken);
             const user = {
                 id: request.data.id,
                 nick: request.data.email.split('@')[0],
+                image: request.data.picture ? request.data.picture.data.url : null,
                 name: request.data.first_name,
                 surname: request.data.last_name
             }
