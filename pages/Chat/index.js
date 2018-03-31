@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Alert, AsyncStorage, TextInput, Button } from 'react-native';
+import { Text, View, TouchableOpacity, Alert, AsyncStorage, TextInput, Button, ScrollView } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import { GiftedChat } from 'react-native-gifted-chat';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 import withContext from '../../lib/withContext';
@@ -12,6 +11,7 @@ class ChatPage extends Component {
     navigation = this.props.navigation;
     state = {
         chats: [{
+            id: 12,
             user: {
                 id: 1,
                 name: 'John',
@@ -20,10 +20,11 @@ class ChatPage extends Component {
                 avatar: 'https://manofmany.com/wp-content/uploads/2017/07/Jon-Snow-2.jpg'
             },
             messages: [{
-                text: 'Hello my friend!',
+                text: 'Hello my friend! I did not write you a long time. So sorry me please. I spent a lot of time for killing died people',
                 time: new Date(),
             }]
         }, {
+            id: 123,
             user: {
                 id: 2,
                 name: 'Dayeneris',
@@ -36,6 +37,7 @@ class ChatPage extends Component {
                 time: new Date(),
             }]
         }, {
+            id: 22,
             user: {
                 id: 3,
                 name: 'Sersea',
@@ -63,20 +65,28 @@ class ChatPage extends Component {
         });
     }
 
+    onPressChat = (id) => {
+        const chat = this.state.chats.find(a => a.id == id);
+        this.navigation.navigate('ChatSingle', { chat });
+    }
+
     render() {
         const user = this.props.context.state.user || {};
         return (
-            <View style={styles.container}>
-                {this.state.chats.length > 0 ?
-                    this.state.chats.map(item => (
-                        <Chat
-                            user={item.user}
-                            lastMessage={item.messages[item.messages.length - 1]}
-                            key={item.user.id}
-                        />
-                    )) :
-                    <Text style={styles.text}>You do not have some chat</Text>
-                }
+            <View style={styles.view}>
+                <ScrollView contentContainerStyle={styles.container}>
+                    {this.state.chats.length > 0 ?
+                        this.state.chats.map(item => (
+                            <Chat
+                                user={item.user}
+                                lastMessage={item.messages[item.messages.length - 1]}
+                                key={item.user.id}
+                                onPressChat={() => this.onPressChat(item.id)}
+                            />
+                        )) :
+                        <Text style={styles.text}>You do not have some chat</Text>
+                    }
+                </ScrollView>
             </View>
         );
     }

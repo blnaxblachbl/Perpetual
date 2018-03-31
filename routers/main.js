@@ -12,6 +12,9 @@ TabStack = (val) => {
             ChatsPage: {
                 screen: ChatsPage
             },
+            ChatSinglePage: {
+                screen: 
+            },
             ProfilePage: {
                 screen: ProfilePage,
             }
