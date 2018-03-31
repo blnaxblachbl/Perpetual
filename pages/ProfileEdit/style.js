@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     mainText : {
-        fontSize: 20,
+        fontSize: 15,
         color: 'white',
     },
     avatarContainer: {
@@ -55,6 +55,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
+    },
+    textInput: {
+        backgroundColor: "transparent",
+        width: "100%",
+        height: 40,
+        top: 15,
+        justifyContent: 'center',
+        marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
     }
 });
 

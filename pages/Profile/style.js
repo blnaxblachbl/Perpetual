@@ -15,8 +15,10 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         paddingTop: 20,
         paddingLeft: 10,
+        paddingRight: 10
     },
     mainText : {
         fontSize: 20,
@@ -54,6 +56,16 @@ const styles = StyleSheet.create({
         marginRight: 10,
         alignItems: 'center',
         justifyContent: 'space-between',
+        flexDirection: 'row',
+    },
+    containerEditButton: {
+        backgroundColor: "transparent",
+        overflow: 'hidden',
+        flex: 1,
+        height: 40,
+        marginTop: 15,
+        right: 10,
+        justifyContent: 'flex-end',
         flexDirection: 'row',
     }
 });

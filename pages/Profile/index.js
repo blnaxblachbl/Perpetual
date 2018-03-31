@@ -46,7 +46,7 @@ class Profile extends Component {
             <View style={styles.container}>
                 <View style={styles.infoContainer}>
                     <View style={styles.avatarContainer}>
-                        { user.avatar ?
+                        {user.avatar ?
                             <Image source={{ uri: user.avatar }} style={styles.avatar} /> :
                             <Image source={require('../../assets/profile.png')} style={styles.avatar} />
                         }
@@ -55,6 +55,13 @@ class Profile extends Component {
                         <Text style={styles.mainText}>{user.username}</Text>
                         <Text style={styles.mainText}>{user.tel} {user.surname}</Text>
                     </View>
+                    <TouchableOpacity style={styles.containerEditButton} onPress={() => this.navigation.navigate('ProfileEdit')} >
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.textButton}>Edit</Text>
+                    </View>
+                    <View >
+                    </View>
+                </TouchableOpacity>
                 </View>
                 <View style={{ width: "90%", justifyContent: 'center', alignContent: 'center' }}>
                     <TouchableOpacity style={styles.containerButton}>
