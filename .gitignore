@@ -26,6 +26,7 @@ project.xcworkspace
 #
 build/
 .idea
+package-lock.json
 .gradle
 local.properties
 *.iml
@@ -55,3 +56,6 @@ buck-out/
 
 yarn.lock
 package-lock.json
+
+android
+ios
