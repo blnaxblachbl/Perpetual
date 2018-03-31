@@ -20,7 +20,7 @@ import styles from './style';
 
 const gun = Gun('http://192.168.0.102:3000/gun');
 
-class LoginPage extends Component {
+class RegistrPage extends Component {
     static navigationOptions = {
         header: null
     }
@@ -28,18 +28,28 @@ class LoginPage extends Component {
     state = {
         loading: false,
         tel: '',
-        password: ''
+        password: '',
+        confirm: '',
+        username: ""
     }
 
-    login = () => {
-        gun.get(this.state.tel + '@' + this.state.password).val(async (data) => {
-            if (data == undefined) {
-                alert("Error - invalid user data")
-            } else if (data.username) {
-                await AsyncStorage.setItem("userId", this.state.tel + '@' + this.state.password);
-                this.navigation.navigate('Main');
+    reg = () => {
+        if (this.state.tel && this.state.password && this.state.confirm && this.state.username) {
+            if (this.state.password == this.state.confirm) {
+                gun.get(this.state.tel + '@' + this.state.password).put({ username: this.state.username, tel: this.state.tel, }, async (data) => {
+                    if (data != undefined) {
+                        await AsyncStorage.setItem("userId", this.state.tel + '@' + this.state.password);
+                        this.navigation.navigate('Main')
+                    } else {
+                        alert("Error - registration error")
+                    }
+                })
+            } else {
+                alert("Confirm password")
             }
-        })
+        } else {
+            alert("Attributes can not be an empty string")
+        }
     }
 
     render() {
@@ -69,6 +79,15 @@ class LoginPage extends Component {
                         style={inputStyle}
                     />
                     <TextInput
+                        onChangeText={(text) => { this.setState({ username: text }) }}
+                        placeholder='Name'
+                        placeholderTextColor="grey"
+                        underlineColorAndroid="grey"
+                        autoCorrect={false}
+                        secureTextEntry={false}
+                        style={inputStyle}
+                    />
+                    <TextInput
                         onChangeText={(text) => { this.setState({ password: text }) }}
                         placeholder='Password'
                         placeholderTextColor="grey"
@@ -77,14 +96,18 @@ class LoginPage extends Component {
                         secureTextEntry={true}
                         style={inputStyle}
                     />
-                    <TouchableHighlight style={styles.containerButton} onPress={() => { this.login() }}>
+                    <TextInput
+                        onChangeText={(text) => { this.setState({ confirm: text }) }}
+                        placeholder='Confirm password'
+                        placeholderTextColor="grey"
+                        underlineColorAndroid="grey"
+                        autoCorrect={false}
+                        secureTextEntry={true}
+                        style={inputStyle}
+                    />
+                    <TouchableHighlight style={styles.containerButton} onPress={() => { this.reg() }}>
                         <Text style={{ color: "white" }}>
-                            Sing in
-                        </Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style={styles.containerButton} onPress={() => { this.navigation.navigate("RegistrPage") }}>
-                        <Text style={{ color: "white" }}>
-                            Sing up
+                            Registrate
                         </Text>
                     </TouchableHighlight>
                 </View>
@@ -93,4 +116,4 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+export default RegistrPage;

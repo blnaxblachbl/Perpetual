@@ -24,7 +24,7 @@ class ChatPage extends Component {
         const chat = this.props.context.state.chats.find(a => a._id == id);
         this.navigation.navigate('ChatSinglePage', {
             chat,
-            nick: chat.user.nick
+            username: chat.user.username
         });
     }
  

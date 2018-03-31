@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image, Text, View, TouchableOpacity, Alert, AsyncStorage } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+import Gun from 'gun/gun.min.js';
 import withContext from '../../lib/withContext';
 
 import styles from './style';
@@ -10,13 +11,16 @@ class Profile extends Component {
     navigation = this.props.navigation;
 
     async componentDidMount() {
-        const [ userString, accessToken ] = await Promise.all([
-            AsyncStorage.getItem('user'),
-            AsyncStorage.getItem('accessToken')
-        ]);
+        const userId = await AsyncStorage.getItem('userId');
         try {
-            const user = JSON.parse(userString);
-            this.props.context.setUser(user);
+            let gun = new Gun('http://192.168.0.102:3000/gun');
+            gun.get(userId).val((data) => {
+                this.props.context.setUser({
+                    _id: userId,
+                    tel: data.tel,
+                    username: data.username
+                });
+            });
         } catch (err) {
             console.log(err);
         }
@@ -27,8 +31,7 @@ class Profile extends Component {
             text: 'Yes',
             onPress: async () => {
                 await Promise.all([
-                    AsyncStorage.removeItem('user'),
-                    AsyncStorage.removeItem('accessToken')
+                    AsyncStorage.removeItem('userId'),
                 ]);
                 return this.navigation.navigate('Auth');
             }
@@ -49,8 +52,8 @@ class Profile extends Component {
                         }
                     </View>
                     <View style={styles.nameInfoContainer}>
-                        <Text style={styles.mainText}>{user.nick}</Text>
-                        <Text style={styles.mainText}>{user.name} {user.surname}</Text>
+                        <Text style={styles.mainText}>{user.username}</Text>
+                        <Text style={styles.mainText}>{user.tel} {user.surname}</Text>
                     </View>
                 </View>
                 <View style={{ width: "90%", justifyContent: 'center', alignContent: 'center' }}>

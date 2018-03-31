@@ -10,22 +10,19 @@ export default class App extends Component {
     state = {
         signedIn: false,
         checkedSignIn: false,
-        user: null
     }
     async componentWillMount() {
-        const user = await AsyncStorage.getItem('user');
+        const user = await AsyncStorage.getItem('userId');
         if (!user) {
             return this.setState({
                 signedIn: false,
                 checkedSignIn: true,
-                user: null
             });
         }
         try {
             return this.setState({
                 signedIn: true,
                 checkedSignIn: true,
-                user: JSON.parse(user)
             });
         } catch (err) {
             console.error(err);
