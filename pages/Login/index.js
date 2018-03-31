@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {
-<<<<<<< HEAD
-<<<<<<< HEAD
     Image,
-=======
->>>>>>> master
-=======
-    Image,
->>>>>>> master
     Text,
     View,
     TouchableOpacity,
@@ -63,26 +56,7 @@ class LoginPage extends Component {
     }
 
     render() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-=======
->>>>>>> master
-=======
-        if (this.state.loading) {
-            return <Loader opacity={false}/>
-        }
->>>>>>> master
-        return (
-            <View style={styles.container}>
-                <Text style={styles.headerText}>Welcome to Perpertual</Text>
-                <LoginButton
-                    readPermissions={['public_profile', 'email']}
-                    onLoginFinished={this.handleFacebookLogin}
-                    style={styles.loginButton}
-                />
-            </View>
-        );
+
     }
 }
 
