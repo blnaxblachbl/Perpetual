@@ -31,12 +31,14 @@ class LoginPage extends Component {
     }
 
     reg = () => {
-        gun.get(this.state.tel + '@' + this.state.password).put({ name: 'bairock' })
+        gun.get(this.state.tel + '@' + this.state.password).put({ username: 'bairock' })
     }
 
     login = () => {
-        gun.get(this.state.tel + '@' + this.state.password, (data) => {
-            alert(data.username)
+        gun.get(this.state.tel + '@' + this.state.password).val((data) => {
+            if(data.username) {
+                this.navigation.navigate('Main')
+            }
         })
     }
 
