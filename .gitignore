@@ -51,8 +51,6 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-android
-ios
 
 yarn.lock
 package-lock.json

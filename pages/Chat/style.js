@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#1a1a1a',
-        alignItems: 'center',
-        justifyContent: 'center'
+        flexDirection: 'column',
+        paddingTop: 10
     },
     textButton: {
         fontWeight: 'bold',
@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: 'center',
         justifyContent: "center",
+    },
+    text: {
+        color: 'white',
+        fontSize: 18,
+        textAlign: 'center'
     }
 });
 

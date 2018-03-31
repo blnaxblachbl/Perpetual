@@ -41,14 +41,13 @@ class Profile extends Component {
 
     render() {
         const user = this.props.context.state.user || {};
-        console.log(user);
         return (
             <View style={styles.container}>
                 <View style={styles.infoContainer}>
                     <View style={styles.avatarContainer}>
-                        { user.image ?
-                            <Image source={{ uri: user.image }} style={styles.avatar} /> :
-                            <Image source={require('./icons/profile.png')} style={styles.avatar} />
+                        { user.avatar ?
+                            <Image source={{ uri: user.avatar }} style={styles.avatar} /> :
+                            <Image source={require('../../assets/profile.png')} style={styles.avatar} />
                         }
                     </View>
                     <View style={styles.nameInfoContainer}>
