@@ -28,36 +28,28 @@ class ProfileEditPage extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.textInput}>
-                    <Text style={styles.mainText}>Nick</Text>    
-                    <TextInput onChangeText={(nick)=> this.setState({nick})} value={this.state.nick}/>
-                </View>    
+                    <Text style={styles.mainText}>Nick</Text>
+                    <TextInput onChangeText={(nick) => this.setState({ nick })} value={this.state.nick} />
+                </View>
                 <View style={styles.textInput}>
-                    <Text style={styles.mainText}>Name</Text>    
-                    <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
-                </View>   
+                    <Text style={styles.mainText}>Name</Text>
+                    <TextInput onChangeText={(nick) => this.setState({ name })} value={this.state.name} />
+                </View>
                 <View style={styles.textInput}>
-                    <Text style={styles.mainText}>Surname</Text>    
-                    <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
-                </View>  
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <TouchableOpacity style={styles.containerButton} >
-                    <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.textButton}>Done</Text>
-                    </View>
-                    <View >
-                        <Ionicon name="ios-arrow-forward" size={20}
-                            color='white' />
-                    </View>
-                </TouchableOpacity> 
-                <TouchableOpacity style={styles.containerButton} >
-                    <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.textButton}>Cancel</Text>
-                    </View>
-                    <View >
-                        <Ionicon name="ios-arrow-forward" size={20}
-                            color='white' />
-                    </View>
-                </TouchableOpacity> 
+                    <Text style={styles.mainText}>Surname</Text>
+                    <TextInput onChangeText={(nick) => this.setState({ name })} value={this.state.name} />
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' , top: 30, left: 5, right: 5, width: "70%"}}>
+                    <TouchableOpacity style={styles.containerButton} >
+                        <View style={{ flexDirection: 'row' }}>
+                            <Text style={styles.textButton}>Done</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.containerButton} >
+                        <View style={{ flexDirection: 'row' }}>
+                            <Text style={styles.textButton}>Cancel</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
