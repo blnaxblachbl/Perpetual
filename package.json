@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "gun": "^0.9.991",
+    "gun-asyncstorage": "^1.0.1",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.4",
     "react-native-gifted-chat": "^0.4.3",
