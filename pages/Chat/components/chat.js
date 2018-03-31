@@ -37,19 +37,19 @@ class ChatSingle extends React.Component {
             const data = await asyncGunGetUser(sender);
             this.setState({
                 user: data
-            })       
+            })
         }
     }
     render() {
         return (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.left} onPress={this.props.onPressChat}>
-                    { this.state.user.avatar ?
+                    {this.state.user.avatar ?
                         <Image source={{ uri: this.props.user.avatar }} style={styles.avatar} /> :
                         <Image source={require('../../../assets/profile.png')} style={styles.avatar} />
                     }
                     <View style={styles.message}>
-                        <Text style={styles.nick}>{this.state.user.username}</Text> */}
+                        <Text style={styles.nick}>{this.state.user.username}</Text>
                         <Text style={styles.lastMessage}>{this.props.lastMessage.user && this.props.lastMessage.user.username + ': '}{this.props.lastMessage.text.substring(0, 70)}...</Text>
                     </View>
                 </TouchableOpacity>
