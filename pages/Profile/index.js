@@ -10,9 +10,14 @@ class Profile extends Component {
     navigation = this.props.navigation;
 
     async componentDidMount() {
+<<<<<<< HEAD
         const [userString, accessToken] = await Promise.all([
             AsyncStorage.getItem('user'),
             AsyncStorage.getItem('accessToken')
+=======
+        const [ userString, accessToken ] = await Promise.all([
+            AsyncStorage.getItem('userId'),
+>>>>>>> master
         ]);
         try {
             const user = JSON.parse(userString);
@@ -27,8 +32,7 @@ class Profile extends Component {
             text: 'Yes',
             onPress: async () => {
                 await Promise.all([
-                    AsyncStorage.removeItem('user'),
-                    AsyncStorage.removeItem('accessToken')
+                    AsyncStorage.removeItem('userId'),
                 ]);
                 return this.navigation.navigate('Auth');
             }
