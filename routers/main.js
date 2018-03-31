@@ -75,9 +75,14 @@ export default TabNavigator({
             header: null
         },
         tabBarPosition: 'bottom',
+<<<<<<< HEAD:routers/main.js
 <<<<<<< HEAD:routers/mainRouter.js
         swipeEnabled: true,
         animationEnabled: true
+=======
+        swipeEnabled:  Platform.OS == 'ios' ? true : false,
+        animationEnabled: Platform.OS == 'ios' ? true : false
+>>>>>>> master:routers/main.js
 =======
         swipeEnabled:  Platform.OS == 'ios' ? true : false,
         animationEnabled: Platform.OS == 'ios' ? true : false
