@@ -11,8 +11,7 @@ class Profile extends Component {
 
     async componentDidMount() {
         const [ userString, accessToken ] = await Promise.all([
-            AsyncStorage.getItem('user'),
-            AsyncStorage.getItem('accessToken')
+            AsyncStorage.getItem('userId'),
         ]);
         try {
             const user = JSON.parse(userString);
@@ -27,8 +26,7 @@ class Profile extends Component {
             text: 'Yes',
             onPress: async () => {
                 await Promise.all([
-                    AsyncStorage.removeItem('user'),
-                    AsyncStorage.removeItem('accessToken')
+                    AsyncStorage.removeItem('userId'),
                 ]);
                 return this.navigation.navigate('Auth');
             }
