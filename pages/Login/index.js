@@ -42,7 +42,7 @@ class LoginPage extends Component {
             const user = {
                 id: request.data.id,
                 nick: request.data.email.split('@')[0],
-                image: request.data.picture ? request.data.picture.data.url : null,
+                avatar: request.data.picture ? request.data.picture.data.url : null,
                 name: request.data.first_name,
                 surname: request.data.last_name
             }
