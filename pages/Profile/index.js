@@ -93,6 +93,19 @@ class Profile extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
+                <TouchableOpacity style={styles.containerButton}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={styles.iconContainer}>
+                                <Ionicon name="md-musical-note" size={20}
+                                    color='white' />
+                            </View>
+                            <Text style={styles.textButton}>Edit</Text>
+                        </View>
+                        <View >
+                            <Ionicon name="ios-arrow-forward" size={20}
+                                color='white' />
+                        </View>
+                    </TouchableOpacity>
             </View>
         );
     }

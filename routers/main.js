@@ -3,6 +3,7 @@ import { Text, View, Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import ChatsPage from '../pages/Chat';
 import ProfilePage from '../pages/Profile';
+import ProfileEdit from '../pages/ProfileEdit';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -56,6 +57,9 @@ export default TabNavigator({
             ),
         },
     },
+    ProfileEdit: {
+        screen: "ProfileEdit"
+    }
 },
     {
         tabBarOptions: {
