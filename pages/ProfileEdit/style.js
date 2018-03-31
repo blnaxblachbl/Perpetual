@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent",
         width: "100%",
         height: 40,
+        top: 15,
+        justifyContent: 'center',
         marginTop: 15,
         marginLeft: 10,
         marginRight: 10,

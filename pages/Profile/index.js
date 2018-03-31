@@ -50,13 +50,11 @@ class Profile extends Component {
                         <Text style={styles.mainText}>{user.nick}</Text>
                         <Text style={styles.mainText}>{user.name} {user.surname}</Text>
                     </View>
-                    <TouchableOpacity style={styles.containerButton} onPress={() => this.navigation.navigate('ProfileEdit')}>
+                    <TouchableOpacity style={styles.containerEditButton} onPress={() => this.navigation.navigate('ProfileEdit')} >
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textButton}>Edit</Text>
                     </View>
                     <View >
-                        <Ionicon name="ios-arrow-forward" size={20}
-                            color='white' />
                     </View>
                 </TouchableOpacity>
                 </View>

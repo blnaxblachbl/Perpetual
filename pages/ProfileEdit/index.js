@@ -16,7 +16,7 @@ class ProfileEditPage extends Component {
     }
 
     static navigationOptions = {
-        title: 'Настройки профиля',
+        title: 'Profile Edit',
         headerTitleStyle: {
             color: 'white'
         }

@@ -57,6 +57,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
+    },
+    containerEditButton: {
+        backgroundColor: "transparent",
+        overflow: 'hidden',
+        flex: 1,
+        height: 40,
+        marginTop: 15,
+        right: 10,
+        justifyContent: 'flex-end',
+        flexDirection: 'row',
     }
 });
 
