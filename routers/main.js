@@ -74,4 +74,8 @@ export default TabNavigator({
         navigationOptions: {
             header: null
         },
-  
+        tabBarPosition: 'bottom',
+        swipeEnabled:  Platform.OS == 'ios' ? true : false,
+        animationEnabled: Platform.OS == 'ios' ? true : false,
+    }
+);

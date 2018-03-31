@@ -56,7 +56,19 @@ class LoginPage extends Component {
     }
 
     render() {
-
+        if (this.state.loading) {
+            return <Loader opacity={false}/>
+        }
+        return (
+            <View style={styles.container}>
+                <Text style={styles.headerText}>Welcome to Perpertual</Text>
+                <LoginButton
+                    readPermissions={['public_profile', 'email']}
+                    onLoginFinished={this.handleFacebookLogin}
+                    style={styles.loginButton}
+                />
+            </View>
+        );
     }
 }
 
