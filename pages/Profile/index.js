@@ -41,11 +41,15 @@ class Profile extends Component {
 
     render() {
         const user = this.props.context.state.user || {};
+        console.log(user);
         return (
             <View style={styles.container}>
                 <View style={styles.infoContainer}>
                     <View style={styles.avatarContainer}>
-                        <Image source={require('./icons/profile.png')} style={styles.avatar} />
+                        { user.image ?
+                            <Image source={{ uri: user.image }} style={styles.avatar} /> :
+                            <Image source={require('./icons/profile.png')} style={styles.avatar} />
+                        }
                     </View>
                     <View style={styles.nameInfoContainer}>
                         <Text style={styles.mainText}>{user.nick}</Text>
@@ -90,6 +94,15 @@ class Profile extends Component {
                         <View >
                             <Ionicon name="ios-arrow-forward" size={20}
                                 color='white' />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.containerButton} onPress={this.handleLogout}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={styles.iconContainer}>
+                                <Ionicon name="md-log-out" size={20}
+                                    color='white' />
+                            </View>
+                            <Text style={styles.textButton}>Logout</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
