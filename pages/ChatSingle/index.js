@@ -27,8 +27,13 @@ class ChatSinglePage extends React.Component {
         //     user: data.chat.user
         // })
         const id = this.navigation.state.params.id;
+        let user = null;
+        if (this.navigation.state.params.userId) {
+            user = this.navigation.state.params.userId;
+        }
         this.setState({
-            id
+            id,
+            user
         });
         gun.get('chats').get(id).on(data => {
             this.setState({

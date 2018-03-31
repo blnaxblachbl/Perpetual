@@ -14,7 +14,6 @@ const gun = Gun('http://192.168.0.102:3000/gun');
 function asyncGunGetUser(id) {
     return new Promise((resolve, reject) => {
         gun.get('users').get(id).val(data => {
-            // console.log(data);
             resolve(data);
         })
     })
