@@ -23,11 +23,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: 'center',
         justifyContent: "center",
-    },
-    textInput: {
-        height: 50,
-        color: 'white',
-    },
+    }
 });
 
 export default styles;
