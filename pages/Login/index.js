@@ -28,6 +28,8 @@ class LoginPage extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View>
+                </View>
                 <View style={{ width: "80%" }}>
                     <TouchableOpacity style={styles.containerButton} onPress={this.handleLogin}>
                         <Text style={styles.textButton}>Войти</Text>
