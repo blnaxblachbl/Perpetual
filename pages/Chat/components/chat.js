@@ -16,7 +16,7 @@ export default (props) => (
             }
             <View style={styles.message}>
                 <Text style={styles.nick}>{props.user.nick}</Text>
-                <Text style={styles.lastMessage}>{props.lastMessage.text.substring(0, 70)}...</Text>
+                <Text style={styles.lastMessage}>{props.lastMessage.user && props.lastMessage.user.nick + ': '}{props.lastMessage.text.substring(0, 70)}...</Text>
             </View>
         </TouchableOpacity>
     </View>

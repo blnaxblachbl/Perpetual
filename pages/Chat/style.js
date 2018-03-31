@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1a1a1a',
+        backgroundColor: '#212121',
         flexDirection: 'column',
         paddingTop: 10
     },
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     view: {
-        backgroundColor: '#1a1a1a',
+        backgroundColor: '#212121',
         flex: 1,
     }
 });
