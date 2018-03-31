@@ -18,12 +18,12 @@ class ProfileEditPage extends Component {
         return (
             <View style={styles.container}>
                 <View>
-                    <Text>Nick</Text>    
-                    <TextInput></TextInput>
+                    <Text style={styles.mainText}>Nick</Text>    
+                    <TextInput/>
                 </View>    
                 <View>
-                    <Text>Name</Text>    
-                    <TextInput></TextInput>
+                    <Text style={styles.mainText}>Name</Text>    
+                    <TextInput/>
                 </View>   
             </View>
         );
