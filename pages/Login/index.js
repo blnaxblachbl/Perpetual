@@ -29,8 +29,11 @@ class LoginPage extends Component {
         return (
             <View style={styles.container}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <View>
                 </View>
+=======
+>>>>>>> master
 =======
 >>>>>>> master
                 <View style={{ width: "80%" }}>
