@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { Image, Text, View, TouchableOpacity, Alert, AsyncStorage, TextInput, Button } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Ionicon from 'react-native-vector-icons/Ionicons';
@@ -6,6 +7,14 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import styles from './style';
 
 class ProfilePage extends Component {
+=======
+import { Text, View, TouchableOpacity, Alert, AsyncStorage, TextInput, Button } from 'react-native';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+
+import style from './style';
+
+class LoginPage extends Component {
+>>>>>>> master
     static navigationOptions = {
         title: 'Профиль',
         headerTitleStyle: {
@@ -17,6 +26,7 @@ class ProfilePage extends Component {
         const { navigate } = this.props.navigation
         return (
             <View style={styles.container}>
+<<<<<<< HEAD
                 <View style={styles.infoContainer}>
                     <View style={styles.avatarContainer}>
                         <Image source={require('./icons/profile.png')} style={styles.avatar} />
@@ -70,6 +80,11 @@ class ProfilePage extends Component {
                 <View style={styles.editButtonContainer}>
                     <TouchableOpacity style={styles.editButton} onPress={this.navigation.navigate('ProfileEdit')}>
                         <Text style={styles.mainText}>Edit</Text>
+=======
+                <View style={{ width: "80%" }}>
+                    <TouchableOpacity style={styles.containerButton}>
+                        <Text style={styles.textButton}>Profile</Text>
+>>>>>>> master
                     </TouchableOpacity>
                 </View>
             </View>
@@ -77,4 +92,8 @@ class ProfilePage extends Component {
     }
 }
 
+<<<<<<< HEAD
 export default ProfilePage;
+=======
+export default LoginPage;
+>>>>>>> master

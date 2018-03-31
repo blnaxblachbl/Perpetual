@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
     editButtonContainer:{
         flex:1,
         alignItems: 'flex-end',
@@ -47,6 +48,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#1a1a1a',
+=======
+    container: {
+        flex: 1,
+        backgroundColor: '#1a1a1a',
+        alignItems: 'center',
+        justifyContent: 'center'
+>>>>>>> master
     },
     textButton: {
         fontWeight: 'bold',
@@ -55,15 +63,26 @@ const styles = StyleSheet.create({
     },
     containerButton: {
         backgroundColor: "transparent",
+<<<<<<< HEAD
+=======
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: 20,
+>>>>>>> master
         overflow: 'hidden',
         width: "100%",
         height: 40,
         marginTop: 15,
+<<<<<<< HEAD
         marginLeft: 10,
         marginRight: 10,
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
+=======
+        alignItems: 'center',
+        justifyContent: "center",
+>>>>>>> master
     }
 });
 

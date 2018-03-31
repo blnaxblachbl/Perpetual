@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {
+<<<<<<< HEAD
     Image,
+=======
+>>>>>>> master
     Text,
     View,
     TouchableOpacity,
@@ -27,7 +30,10 @@ class LoginPage extends Component {
     }
 
     render() {
+<<<<<<< HEAD
     
+=======
+>>>>>>> master
         return (
             <View style={styles.container}>
                 <View style={{ width: "80%" }}>

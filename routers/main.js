@@ -76,6 +76,10 @@ export default TabNavigator({
         },
         tabBarPosition: 'bottom',
         swipeEnabled:  Platform.OS == 'ios' ? true : false,
+<<<<<<< HEAD:routers/main.js
         animationEnabled: Platform.OS == 'ios' ? true : false,
+=======
+        animationEnabled: Platform.OS == 'ios' ? true : false
+>>>>>>> master:routers/main.js
     }
 );
