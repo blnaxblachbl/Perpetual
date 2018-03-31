@@ -45,9 +45,9 @@ class ChatSinglePage extends React.Component {
 }
 
 export default withContext(ChatSinglePage, ({navigation}) => {
-    const username = navigation.state.params.username;
+    // const username = navigation.state.params.username;
     return {
-        title: username,
+        title: 'Чат',
         headerTitleStyle: {
             color: 'white'
         },

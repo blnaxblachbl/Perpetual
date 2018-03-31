@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         height: 54,
         width: 54,
         borderRadius: 27,
+        backgroundColor: 'white'
     },
     data: {
         flexDirection: 'column',

@@ -10,15 +10,10 @@ import {
 
 import withContext from '../../lib/withContext';
 import styles from './style';
+import Gun from 'gun/gun.min.js'
 
-function makeid() {
-    let text = "";
-    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  
-    for (let i = 0; i < 8; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-  
-    return text;
+function makeid(user1, user2) {
+    return `${user1}/${user2}`;
 }
 
 const fakeData = [{
@@ -52,12 +47,26 @@ class CreateChat extends React.Component {
     }
 
     onChange = async (searchValue) => {
-        gun.get()
+        let arr = [];
+        let users = [];
+        gun.get('users').val(async (data) => {
+            arr = Object.keys(data);
+        });
+        for (let i = 1; i < arr.length; i += 1) {
+            gun.get('users').get(arr[i]).val(data => {
+                let a = data;
+                a['_id'] = arr[i];
+                users.push(a);
+            })
+        }
+        users = users.filter(item => {
+            return item.username.includes(searchValue) && item._id != this.props.context.state.user._id;
+        });
         if (searchValue.length > 0) {
             this.setState({ 
                 searchValue
             });
-            const arr = fakeData.filter(item => {
+            const arr = users.filter(item => {
                 return this.state.chats.findIndex(a => a.user._id == item._id) < 0;
             })
             this.setState({
@@ -73,7 +82,7 @@ class CreateChat extends React.Component {
 
     createChat = (user) => {
         const chat = {
-            _id: makeid(),
+            _id: makeid(user._id, this.props.context.state.user._id),
             user,
             messages: []
         }

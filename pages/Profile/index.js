@@ -38,6 +38,7 @@ class Profile extends Component {
                 await Promise.all([
                     AsyncStorage.removeItem('userId'),
                 ]);
+                this.props.context.clearState();
                 return this.navigation.navigate('Auth');
             }
         }, {

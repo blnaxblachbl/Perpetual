@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Alert, AsyncStorage, TextInput, Button, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, Alert, AsyncStorage, TextInput, Button, ScrollView, RefreshControl } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 import withContext from '../../lib/withContext';
 import styles from './style';
 import Chat from './components/chat';
+
+const gun = Gun('http://192.168.0.102:3000/gun');
 
 class ChatPage extends Component {
     navigation = this.props.navigation;
@@ -22,9 +24,10 @@ class ChatPage extends Component {
 
     onPressChat = (id) => {
         const chat = this.props.context.state.chats.find(a => a._id == id);
+        console.log(chat);
         this.navigation.navigate('ChatSinglePage', {
             chat,
-            username: chat.user.username
+            // username: chat.user.username
         });
     }
  
@@ -32,14 +35,22 @@ class ChatPage extends Component {
         const user = this.props.context.state.user || {};
         return (
             <View style={styles.view}>
-                <ScrollView contentContainerStyle={styles.container}>
+                <ScrollView contentContainerStyle={styles.container}
+                    refreshControl={
+                        <RefreshControl
+                            onRefresh={this.props.context.refreshPage}
+                            refreshing={this.props.context.state.loading}
+                        />
+                    }
+                >
                     {this.props.context.state.chats.length > 0 ?
                         this.props.context.state.chats.map(item => (
                             <Chat
-                                user={item.user}
+                                ids={item._id}
                                 lastMessage={item.messages[0]}
-                                key={item.user._id}
+                                key={item._id}
                                 onPressChat={() => this.onPressChat(item._id)}
+                                user={user}
                             />
                         )) :
                         <Text style={styles.text}>You do not have some chat</Text>
