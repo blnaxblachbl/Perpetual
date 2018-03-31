@@ -61,7 +61,7 @@ class Profile extends Component {
                         <Text style={styles.mainText}>{user.tel} {user.surname}</Text>
                     </View>
                     <TouchableOpacity style={styles.containerEditButton} onPress={() => this.navigation.navigate('ProfileEdit')} >
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={{ flexDirection: 'row', right: 10}}>
                         <Text style={styles.textButton}>Edit</Text>
                     </View>
                     <View >
