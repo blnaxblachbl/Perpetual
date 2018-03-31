@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import { AsyncStorage, StatusBar, View } from 'react-native';
+import Provider, { Context } from './lib/Provider';
 
 import Main from './routers/main';
 import Auth from './routers/auth';
@@ -37,14 +38,13 @@ export default class App extends Component {
         }
         const Layout = createRootNavigator(signedIn);
         return (
-            <View style={{ flex: 1 }}>
+            <Provider>
                 <StatusBar barStyle="light-content"/>
                 <Layout onNavigationStateChange={null}/>
-            </View>
+            </Provider>
         );
     }
 }
-
 
 const createRootNavigator = (signedIn = false) => {
   return StackNavigator(

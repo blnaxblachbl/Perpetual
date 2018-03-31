@@ -23,6 +23,17 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: 'center',
         justifyContent: "center",
+    },
+    headerText: {
+        fontSize: 25,
+        textAlign: 'center',
+        color: 'white',
+        marginBottom: 20
+    },
+    loginButton: {
+        height: 40,
+        width: 220,
+        padding: 10
     }
 });
 
