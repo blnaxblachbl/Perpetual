@@ -9,7 +9,8 @@ import {
     AsyncStorage,
     TextInput,
     Button,
-    TouchableHighlight
+    TouchableHighlight,
+    Platform
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Gun from 'gun/gun.min.js'
@@ -35,8 +36,9 @@ class RegistrPage extends Component {
     reg = () => {
         if (this.state.tel && this.state.password && this.state.confirm && this.state.username) {
             if (this.state.password == this.state.confirm) {
-                gun.get(this.state.tel + '@' + this.state.password).put({ username: this.state.username }, (data) => {
+                gun.get(this.state.tel + '@' + this.state.password).put({ username: this.state.username, tel: this.state.tel, }, async (data) => {
                     if (data != undefined) {
+                        await AsyncStorage.setItem("userId", this.state.tel + '@' + this.state.password);
                         this.navigation.navigate('Main')
                     } else {
                         alert("Error - registration error")
@@ -54,6 +56,14 @@ class RegistrPage extends Component {
         if (this.state.loading) {
             return <Loader opacity={false} />
         }
+        let inputStyle = { color: "white" };
+        if (Platform.OS == 'ios') {
+            inputStyle = {
+                color: "white",
+                width: '80%',
+                height: 50,
+            }
+        }
         return (
             <View style={styles.container}>
                 <Text style={styles.headerText}>Welcome to Perpertual</Text>
@@ -66,7 +76,7 @@ class RegistrPage extends Component {
                         underlineColorAndroid="grey"
                         autoFocus={false}
                         autoCorrect={false}
-                        style={{ color: "white" }}
+                        style={inputStyle}
                     />
                     <TextInput
                         onChangeText={(text) => { this.setState({ username: text }) }}
@@ -75,7 +85,7 @@ class RegistrPage extends Component {
                         underlineColorAndroid="grey"
                         autoCorrect={false}
                         secureTextEntry={false}
-                        style={{ color: "white" }}
+                        style={inputStyle}
                     />
                     <TextInput
                         onChangeText={(text) => { this.setState({ password: text }) }}
@@ -84,7 +94,7 @@ class RegistrPage extends Component {
                         underlineColorAndroid="grey"
                         autoCorrect={false}
                         secureTextEntry={true}
-                        style={{ color: "white" }}
+                        style={inputStyle}
                     />
                     <TextInput
                         onChangeText={(text) => { this.setState({ confirm: text }) }}
@@ -93,7 +103,7 @@ class RegistrPage extends Component {
                         underlineColorAndroid="grey"
                         autoCorrect={false}
                         secureTextEntry={true}
-                        style={{ color: "white" }}
+                        style={inputStyle}
                     />
                     <TouchableHighlight style={styles.containerButton} onPress={() => { this.reg() }}>
                         <Text style={{ color: "white" }}>
