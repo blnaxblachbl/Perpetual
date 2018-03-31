@@ -6,6 +6,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import styles from './style';
 
 class ProfileEditPage extends Component {
+    navigation = this.props.navigation;
     constructor(props) {
         super(props);
         this.state = {
@@ -20,6 +21,7 @@ class ProfileEditPage extends Component {
             color: 'white'
         }
     }
+
 
     render() {
         const { navigate } = this.props.navigation
@@ -38,7 +40,7 @@ class ProfileEditPage extends Component {
                     <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
                 </View>  
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <TouchableOpacity style={styles.containerButton} onPress={this.navigation.navigate('Profile')}>
+                <TouchableOpacity style={styles.containerButton} >
                     <View style={{ flexDirection: 'row' }}>
                         <View style={styles.iconContainer}>
                             <Ionicon name="md-musical-note" size={20}
@@ -51,7 +53,7 @@ class ProfileEditPage extends Component {
                             color='white' />
                     </View>
                 </TouchableOpacity> 
-                <TouchableOpacity style={styles.containerButton} onPress={this.navigation.navigate('Profile')}>
+                <TouchableOpacity style={styles.containerButton} >
                     <View style={{ flexDirection: 'row' }}>
                         <View style={styles.iconContainer}>
                             <Ionicon name="md-musical-note" size={20}

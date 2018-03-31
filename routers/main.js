@@ -64,9 +64,6 @@ export default TabNavigator({
             ),
         },
     },
-    ProfileEdit: {
-        screen: "ProfileEdit"
-    }
 },
     {
         lazy: false,
