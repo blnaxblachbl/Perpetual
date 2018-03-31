@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Image, Text, View, TouchableOpacity, Alert, AsyncStorage } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import { LoginManager } from 'react-native-fbsdk'
 import withContext from '../../lib/withContext';
 
 import styles from './style';
@@ -28,7 +27,6 @@ class Profile extends Component {
             text: 'Yes',
             onPress: async () => {
                 await Promise.all([
-                    LoginManager.logOut(),
                     AsyncStorage.removeItem('user'),
                     AsyncStorage.removeItem('accessToken')
                 ]);

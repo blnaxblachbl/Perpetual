@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import ChatsPage from '../pages/Chat';
+import ChatSinglePage from '../pages/ChatSingle';
 import ProfilePage from '../pages/Profile';
 import ProfileEdit from '../pages/ProfileEdit';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -12,6 +13,9 @@ TabStack = (val) => {
         {
             ChatsPage: {
                 screen: ChatsPage
+            },
+            ChatSinglePage: {
+                screen: ChatSinglePage
             },
             ProfilePage: {
                 screen: ProfilePage,

@@ -28,6 +28,10 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         textAlign: 'center'
+    },
+    view: {
+        backgroundColor: '#1a1a1a',
+        flex: 1,
     }
 });
 
