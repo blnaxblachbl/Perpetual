@@ -36,7 +36,7 @@ class RegistrPage extends Component {
     reg = () => {
         if (this.state.tel && this.state.password && this.state.confirm && this.state.username) {
             if (this.state.password == this.state.confirm) {
-                gun.get(this.state.tel + '@' + this.state.password).put({ username: this.state.username, tel: this.state.tel, }, async (data) => {
+                gun.get('users').get(this.state.tel + '@' + this.state.password).put({ username: this.state.username, tel: this.state.tel, }, async (data) => {
                     if (data != undefined) {
                         await AsyncStorage.setItem("userId", this.state.tel + '@' + this.state.password);
                         this.navigation.navigate('Main')

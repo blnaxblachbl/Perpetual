@@ -35,6 +35,8 @@ const fakeData = [{
     avatar: 'https://historytime.ru/wp-content/uploads/2016/07/image-3.jpeg'
 }];
 
+const gun = Gun('http://192.168.0.102:3000/gun');
+
 class CreateChat extends React.Component {
     state = {
         searchValue: '',
@@ -49,7 +51,8 @@ class CreateChat extends React.Component {
         this.setState({ chats });
     }
 
-    onChange = (searchValue) => {
+    onChange = async (searchValue) => {
+        gun.get()
         if (searchValue.length > 0) {
             this.setState({ 
                 searchValue
