@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     },
     textButton: {
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
         fontSize: 15,
         color: "white"
     },

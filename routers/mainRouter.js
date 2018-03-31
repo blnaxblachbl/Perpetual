@@ -96,8 +96,8 @@ const Tabs = TabNavigator({
             header: null
         },
         tabBarPosition: 'bottom',
-        swipeEnabled: false,
-        animationEnabled: false
+        swipeEnabled: true,
+        animationEnabled: true
     }
 );
 
