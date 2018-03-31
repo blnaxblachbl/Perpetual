@@ -10,7 +10,7 @@ class Profile extends Component {
     navigation = this.props.navigation;
 
     async componentDidMount() {
-        const [ userString, accessToken ] = await Promise.all([
+        const [userString, accessToken] = await Promise.all([
             AsyncStorage.getItem('user'),
             AsyncStorage.getItem('accessToken')
         ]);
@@ -43,7 +43,7 @@ class Profile extends Component {
             <View style={styles.container}>
                 <View style={styles.infoContainer}>
                     <View style={styles.avatarContainer}>
-                        { user.avatar ?
+                        {user.avatar ?
                             <Image source={{ uri: user.avatar }} style={styles.avatar} /> :
                             <Image source={require('../../assets/profile.png')} style={styles.avatar} />
                         }
@@ -103,19 +103,19 @@ class Profile extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.containerButton}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <View style={styles.iconContainer}>
-                                <Ionicon name="md-musical-note" size={20}
-                                    color='white' />
-                            </View>
-                            <Text style={styles.textButton}>Edit</Text>
-                        </View>
-                        <View >
-                            <Ionicon name="ios-arrow-forward" size={20}
+                <TouchableOpacity style={styles.containerButton} onPress={this.navigation.navigate('ProfileEdit')}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.iconContainer}>
+                            <Ionicon name="md-musical-note" size={20}
                                 color='white' />
                         </View>
-                    </TouchableOpacity>
+                        <Text style={styles.textButton}>Edit</Text>
+                    </View>
+                    <View >
+                        <Ionicon name="ios-arrow-forward" size={20}
+                            color='white' />
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }

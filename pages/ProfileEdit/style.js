@@ -55,6 +55,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
+    },
+    textInput: {
+        backgroundColor: "transparent",
+        width: "100%",
+        height: 40,
+        marginTop: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        alignItems: 'center',
     }
 });
 

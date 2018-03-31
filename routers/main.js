@@ -19,6 +19,9 @@ TabStack = (val) => {
             },
             ProfilePage: {
                 screen: ProfilePage,
+            },
+            ProfileEdit: {
+                screen: ProfileEdit,
             }
         }, {
             initialRouteName: val,
