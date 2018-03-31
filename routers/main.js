@@ -1,15 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View, Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import LoginPage from '../pages/loginPage';
-import ChatsPage from '../pages/chatsPage';
-import ProfilePage from '../pages/profilePage';
+import ChatsPage from '../pages/Chat';
+import ProfilePage from '../pages/Profile';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-const stackNavigatorConfig = {
-    initialRouteName: 'LoginPage',
-};
 
 TabStack = (val) => {
     const TabStack = StackNavigator(
@@ -18,38 +13,33 @@ TabStack = (val) => {
                 screen: ChatsPage
             },
             ProfilePage: {
-                screen: ProfilePage
+                screen: ProfilePage,
             }
         }, {
-            initialRouteName: val
+            initialRouteName: val,
+            navigationOptions: {
+                headerStyle: {
+                    elevation: 0,
+                    shadowOpacity: 0,   
+                    backgroundColor: '#000',
+                    borderBottomColor: 'black'
+                }
+            }
         }
     )
 
     return TabStack;
 }
 
-
-
-const Tabs = TabNavigator({
+export default TabNavigator({
     Chats: {
         screen: this.TabStack("ChatsPage"),
         navigationOptions: {
-            tabBarLabel: () => (
-                <Text
-                    style={{
-                        fontWeight: 'bold',
-                        fontSize: 15,
-                        color: "white"
-                    }}
-                >
-                    Chats
-                </Text>
-            ),
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons
                     name="ios-chatbubbles"
                     size={27}
-                    color="white"
+                    color={tintColor}
                 />
             ),
         },
@@ -57,22 +47,11 @@ const Tabs = TabNavigator({
     Profile: {
         screen: this.TabStack("ProfilePage"),
         navigationOptions: {
-            tabBarLabel: () => (
-                <Text
-                    style={{
-                        fontWeight: 'bold',
-                        fontSize: 15,
-                        color: "white"
-                    }}
-                >
-                    Profile
-                </Text>
-            ),
             tabBarIcon: ({ tintColor }) => (
                 <FontAwesomeIcon
                     name="user-circle"
                     size={23}
-                    color="white"
+                    color={tintColor}
                 />
             ),
         },
@@ -81,9 +60,9 @@ const Tabs = TabNavigator({
     {
         tabBarOptions: {
             showIcon: true,
-            showLabel: true,
-            inactiveTintColor: "#babdc2",
-            activeTintColor: "#fff",
+            showLabel: false,
+            inactiveTintColor: "white",
+            activeTintColor: "#6da2f9",
             style: {
                 backgroundColor: "#000",
                 justifyContent: "center"
@@ -96,16 +75,7 @@ const Tabs = TabNavigator({
             header: null
         },
         tabBarPosition: 'bottom',
-        swipeEnabled: false,
-        animationEnabled: false
+        swipeEnabled:  Platform.OS == 'ios' ? true : false,
+        animationEnabled: Platform.OS == 'ios' ? true : false
     }
 );
-
-export default StackNavigator({
-    LoginPage: {
-        screen: LoginPage,
-    },
-    Tabs: {
-        screen: Tabs
-    },
-}, stackNavigatorConfig);
