@@ -17,7 +17,14 @@ class ProfileEditPage extends Component {
         const { navigate } = this.props.navigation
         return (
             <View style={styles.container}>
-                
+                <View>
+                    <Text>Nick</Text>    
+                    <TextInput></TextInput>
+                </View>    
+                <View>
+                    <Text>Name</Text>    
+                    <TextInput></TextInput>
+                </View>   
             </View>
         );
     }
