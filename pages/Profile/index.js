@@ -10,14 +10,8 @@ class Profile extends Component {
     navigation = this.props.navigation;
 
     async componentDidMount() {
-<<<<<<< HEAD
         const [userString, accessToken] = await Promise.all([
-            AsyncStorage.getItem('user'),
-            AsyncStorage.getItem('accessToken')
-=======
-        const [ userString, accessToken ] = await Promise.all([
             AsyncStorage.getItem('userId'),
->>>>>>> master
         ]);
         try {
             const user = JSON.parse(userString);
@@ -56,6 +50,15 @@ class Profile extends Component {
                         <Text style={styles.mainText}>{user.nick}</Text>
                         <Text style={styles.mainText}>{user.name} {user.surname}</Text>
                     </View>
+                    <TouchableOpacity style={styles.containerButton} onPress={() => this.navigation.navigate('ProfileEdit')}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.textButton}>Edit</Text>
+                    </View>
+                    <View >
+                        <Ionicon name="ios-arrow-forward" size={20}
+                            color='white' />
+                    </View>
+                </TouchableOpacity>
                 </View>
                 <View style={{ width: "90%", justifyContent: 'center', alignContent: 'center' }}>
                     <TouchableOpacity style={styles.containerButton}>
@@ -107,19 +110,6 @@ class Profile extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.containerButton} onPress={this.navigation.navigate('ProfileEdit')}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={styles.iconContainer}>
-                            <Ionicon name="md-musical-note" size={20}
-                                color='white' />
-                        </View>
-                        <Text style={styles.textButton}>Edit</Text>
-                    </View>
-                    <View >
-                        <Ionicon name="ios-arrow-forward" size={20}
-                            color='white' />
-                    </View>
-                </TouchableOpacity>
             </View>
         );
     }

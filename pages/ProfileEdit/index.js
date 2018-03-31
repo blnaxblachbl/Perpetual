@@ -32,11 +32,11 @@ class ProfileEditPage extends Component {
                     <TextInput onChangeText={(nick)=> this.setState({nick})} value={this.state.nick}/>
                 </View>    
                 <View style={styles.textInput}>
-                    <Text style={styles.textInput}></Text>    
+                    <Text style={styles.mainText}>Name</Text>    
                     <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
                 </View>   
-                <View style={styles.textInput}>
-                    <Text style={styles.textInput}></Text>    
+                <View style={styles.textText}>
+                    <Text style={styles.textInput}>Surname</Text>    
                     <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
                 </View>  
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
