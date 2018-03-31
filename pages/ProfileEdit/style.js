@@ -1,15 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    editButtonContainer:{
-        flex:1,
-        alignItems: 'flex-end',
-        justifyContent: 'flex-end'
-    },
-    editButton: {
-        right: 10,
-        bottom: 10
-    },
     iconContainer: {
         flexDirection : 'row',
         justifyContent: 'center',

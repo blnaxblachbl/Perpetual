@@ -5,7 +5,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 
 import styles from './style';
 
-class LoginPage extends Component {
+class ProfilePage extends Component {
     static navigationOptions = {
         title: 'Профиль',
         headerTitleStyle: {
@@ -67,9 +67,14 @@ class LoginPage extends Component {
                         </View>
                     </TouchableOpacity>
                 </View>
+                <View style={styles.editButtonContainer}>
+                    <TouchableOpacity style={styles.editButton} onPress={this.navigation.navigate('ProfileEdit')}>
+                        <Text style={styles.mainText}>Edit</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
 }
 
-export default LoginPage;
+export default ProfilePage;
