@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         height: 60,
         paddingTop: 5,
-        paddingLeft: 10,
+        paddingLeft: 17,
     },
     infoContainer: {
         flexDirection: 'row',
