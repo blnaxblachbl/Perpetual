@@ -6,16 +6,29 @@ class ChatSinglePage extends React.Component {
     navigation = this.props.navigation;
     state = {
         messages: [],
-        
+        user: null,
+        id: null
     }
     componentWillMount() {
-        const chat = this.navigation.state.params;
-        console.log(chat);
+        const data = this.navigation.state.params;
+        let _data = data.chat.messages.map(item => {
+            if (!item.user) {
+                item['user'] = data.chat.user;
+            }
+            return item;
+        });
+        this.setState({
+            messages: data.chat.messages,
+            id: data.chat._id,
+            user: data.chat.user
+        })
     }
     onSend(messages = []) {
         this.setState(previousState => ({
             messages: GiftedChat.append(previousState.messages, messages),
-        }));
+        }), () => {
+            this.navigation.state.params.addMessage(this.state.id, this.state.messages);
+        });
     }
     render() {
         const user = this.props.context.state.user || {};

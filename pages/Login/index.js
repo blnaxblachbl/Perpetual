@@ -40,7 +40,7 @@ class LoginPage extends Component {
             const userID = data.userID;
             const request = await axios.get('https://graph.facebook.com/v2.12/me?fields=email,first_name,last_name,picture.width(640)&access_token=' + accessToken);
             const user = {
-                id: request.data.id,
+                _id: request.data.id,
                 nick: request.data.email.split('@')[0],
                 avatar: request.data.picture ? request.data.picture.data.url : null,
                 name: request.data.first_name,
