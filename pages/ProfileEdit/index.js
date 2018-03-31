@@ -35,17 +35,13 @@ class ProfileEditPage extends Component {
                     <Text style={styles.mainText}>Name</Text>    
                     <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
                 </View>   
-                <View style={styles.textText}>
-                    <Text style={styles.textInput}>Surname</Text>    
+                <View style={styles.textInput}>
+                    <Text style={styles.mainText}>Surname</Text>    
                     <TextInput onChangeText={(nick)=> this.setState({name})} value={this.state.name}/>
                 </View>  
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <TouchableOpacity style={styles.containerButton} >
                     <View style={{ flexDirection: 'row' }}>
-                        <View style={styles.iconContainer}>
-                            <Ionicon name="md-musical-note" size={20}
-                                color='white' />
-                        </View>
                         <Text style={styles.textButton}>Done</Text>
                     </View>
                     <View >
@@ -55,10 +51,6 @@ class ProfileEditPage extends Component {
                 </TouchableOpacity> 
                 <TouchableOpacity style={styles.containerButton} >
                     <View style={{ flexDirection: 'row' }}>
-                        <View style={styles.iconContainer}>
-                            <Ionicon name="md-musical-note" size={20}
-                                color='white' />
-                        </View>
                         <Text style={styles.textButton}>Cancel</Text>
                     </View>
                     <View >

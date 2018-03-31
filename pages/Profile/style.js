@@ -15,8 +15,10 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         paddingTop: 20,
         paddingLeft: 10,
+        paddingRight: 10
     },
     mainText : {
         fontSize: 20,

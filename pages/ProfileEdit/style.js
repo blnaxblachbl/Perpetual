@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     mainText : {
-        fontSize: 20,
+        fontSize: 15,
         color: 'white',
     },
     avatarContainer: {
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginLeft: 10,
         marginRight: 10,
-        alignItems: 'center',
     }
 });
 
