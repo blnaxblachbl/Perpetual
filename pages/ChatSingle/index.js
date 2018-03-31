@@ -27,7 +27,7 @@ class ChatSinglePage extends React.Component {
         this.setState(previousState => ({
             messages: GiftedChat.append(previousState.messages, messages),
         }), () => {
-            this.navigation.state.params.addMessage(this.state.id, this.state.messages);
+            this.props.context.addMessage(this.state.id, this.state.messages, this.state.user);
         });
     }
     render() {
@@ -37,9 +37,19 @@ class ChatSinglePage extends React.Component {
                 messages={this.state.messages}
                 onSend={messages => this.onSend(messages)}
                 user={user}
+                renderAvatar={null}
+                bottomOffset={75}
             />
         )
     }
 }
 
-export default withContext(ChatSinglePage);
+export default withContext(ChatSinglePage, ({navigation}) => {
+    const nick = navigation.state.params.nick;
+    return {
+        title: nick,
+        headerTitleStyle: {
+            color: 'white'
+        },
+    }
+});

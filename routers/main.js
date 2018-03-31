@@ -4,6 +4,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import ChatsPage from '../pages/Chat';
 import ChatSinglePage from '../pages/ChatSingle';
 import ProfilePage from '../pages/Profile';
+import CreateChatPage from '../pages/CreateChat';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -18,6 +19,9 @@ TabStack = (val) => {
             },
             ProfilePage: {
                 screen: ProfilePage,
+            },
+            CreateChatPage: {
+                screen: CreateChatPage
             }
         }, {
             initialRouteName: val,
@@ -27,7 +31,8 @@ TabStack = (val) => {
                     shadowOpacity: 0,   
                     backgroundColor: '#000',
                     borderBottomColor: 'black'
-                }
+                },
+                headerTintColor: 'white'
             }
         }
     )
