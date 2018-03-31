@@ -14,12 +14,17 @@ class Profile extends Component {
         const userId = await AsyncStorage.getItem('userId');
         try {
             let gun = new Gun('http://192.168.0.102:3000/gun');
-            gun.get(userId).val((data) => {
-                this.props.context.setUser({
-                    _id: userId,
-                    tel: data.tel,
-                    username: data.username
-                });
+            gun.get('users').get(userId).val((data) => {
+                if (data) {
+                    this.props.context.setUser({
+                        _id: userId,
+                        tel: data.tel,
+                        username: data.username
+                    });
+                } else {
+                    AsyncStorage.removeItem('userId');
+                    return this.navigation.navigate('Auth');
+                }
             });
         } catch (err) {
             console.log(err);

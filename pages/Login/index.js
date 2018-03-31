@@ -32,7 +32,7 @@ class LoginPage extends Component {
     }
 
     login = () => {
-        gun.get(this.state.tel + '@' + this.state.password).val(async (data) => {
+        gun.get('users').get(this.state.tel + '@' + this.state.password).val(async (data) => {
             if (data == undefined) {
                 alert("Error - invalid user data")
             } else if (data.username) {
