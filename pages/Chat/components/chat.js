@@ -49,7 +49,7 @@ class ChatSingle extends React.Component {
                         <Image source={require('../../../assets/profile.png')} style={styles.avatar} />
                     }
                     <View style={styles.message}>
-                        <Text style={styles.nick}>{this.state.user.username}</Text> */}
+                        <Text style={styles.nick}>{this.state.user.username}</Text>
                         <Text style={styles.lastMessage}>{this.props.lastMessage.user && this.props.lastMessage.user.username + ': '}{this.props.lastMessage.text.substring(0, 70)}...</Text>
                     </View>
                 </TouchableOpacity>

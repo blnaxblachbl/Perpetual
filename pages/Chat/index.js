@@ -6,6 +6,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import withContext from '../../lib/withContext';
 import styles from './style';
 import Chat from './components/chat';
+import Gun from 'gun/gun.min.js'
 
 const gun = Gun('http://192.168.0.102:3000/gun');
 
@@ -23,11 +24,9 @@ class ChatPage extends Component {
     }
 
     onPressChat = (id) => {
-        const chat = this.props.context.state.chats.find(a => a._id == id);
-        console.log(chat);
+        // const chat = this.props.context.state.chats.find(a => a._id == id);
         this.navigation.navigate('ChatSinglePage', {
-            chat,
-            // username: chat.user.username
+            id
         });
     }
  
@@ -44,11 +43,11 @@ class ChatPage extends Component {
                     }
                 >
                     {this.props.context.state.chats.length > 0 ?
-                        this.props.context.state.chats.map(item => (
+                        this.props.context.state.chats.map((item, i) => (
                             <Chat
                                 ids={item._id}
                                 lastMessage={item.messages[0]}
-                                key={item._id}
+                                key={i}
                                 onPressChat={() => this.onPressChat(item._id)}
                                 user={user}
                             />

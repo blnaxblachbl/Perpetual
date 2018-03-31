@@ -1,6 +1,10 @@
 import React from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
 import withContext from '../../lib/withContext';
+import Gun from 'gun/gun.min.js'
+
+const gun = Gun('http://192.168.0.102:3000/gun');
+
 
 class ChatSinglePage extends React.Component {
     navigation = this.props.navigation;
@@ -10,25 +14,40 @@ class ChatSinglePage extends React.Component {
         id: null
     }
     componentWillMount() {
-        const data = this.navigation.state.params;
-        let _data = data.chat.messages.map(item => {
-            if (!item.user) {
-                item['user'] = data.chat.user;
-            }
-            return item;
-        });
+        // const data = this.navigation.state.params;
+        // let _data = data.chat.messages.map(item => {
+        //     if (!item.user) {
+        //         item['user'] = data.chat.user;
+        //     }
+        //     return item;
+        // });
+        // this.setState({
+        //     messages: data.chat.messages,
+        //     id: data.chat._id,
+        //     user: data.chat.user
+        // })
+        const id = this.navigation.state.params.id;
         this.setState({
-            messages: data.chat.messages,
-            id: data.chat._id,
-            user: data.chat.user
+            id
+        });
+        gun.get('chats').get(id).on(data => {
+            this.setState({
+                messages: []
+            })
+            try {
+                const d = JSON.parse(data);
+                this.setState({
+                    messages: d.messages
+                })
+            } catch (err) {
+                console.log(err);
+            }
         })
     }
     onSend(messages = []) {
-        this.setState(previousState => ({
-            messages: GiftedChat.append(previousState.messages, messages),
-        }), () => {
-            this.props.context.addMessage(this.state.id, this.state.messages, this.state.user);
-        });
+        const message1 = GiftedChat.append(this.state.messages, messages);
+        this.props.context.addMessage(this.state.id, message1, this.state.user);
+        this.props.context.refreshPage();
     }
     render() {
         const user = this.props.context.state.user || {};
