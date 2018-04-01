@@ -7,20 +7,55 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-export default (props) => (
-    <View style={styles.container}>
-        <TouchableOpacity style={styles.left} onPress={props.onPressChat}>
-            { props.user.avatar ?
-                <Image source={{ uri: props.user.avatar }} style={styles.avatar} /> :
-                <Image source={require('../../../assets/profile.png')} style={styles.avatar} />
-            }
-            <View style={styles.message}>
-                <Text style={styles.nick}>{props.user.username}</Text>
-                <Text style={styles.lastMessage}>{props.lastMessage.user && props.lastMessage.user.username + ': '}{props.lastMessage.text.substring(0, 70)}...</Text>
+import Gun from 'gun/gun.min.js'
+
+const gun = Gun('http://192.168.0.102:3000/gun');
+
+function asyncGunGetUser(id) {
+    return new Promise((resolve, reject) => {
+        gun.get('users').get(id).val(data => {
+            resolve(data);
+        })
+    })
+}
+
+class ChatSingle extends React.Component {
+    state = {
+        user: {}
+    }
+    async componentWillMount() {
+        const ids = this.props.ids.split('/');
+        const sender = ids[1];
+        const receiver = ids[0];
+        if (sender == this.props.user._id) {
+            const data = await asyncGunGetUser(receiver);
+            this.setState({
+                user: data
+            })
+        } else {
+            const data = await asyncGunGetUser(sender);
+            this.setState({
+                user: data
+            })
+        }
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.left} onPress={this.props.onPressChat}>
+                    {/* {this.state.user.avatar ?
+                        <Image source={{ uri: this.props.user.avatar }} style={styles.avatar} /> :
+                    } */}
+                    <Image source={require('../../../assets/profile.png')} style={styles.avatar} />
+                    <View style={styles.message}>
+                        <Text style={styles.nick}>{this.state.user.username}</Text>
+                        <Text style={styles.lastMessage}>{this.props.lastMessage.user && this.props.lastMessage.user.username + ': '}{this.props.lastMessage.text.substring(0, 70)}...</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
-        </TouchableOpacity>
-    </View>
-)
+        )
+    }
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -37,7 +72,8 @@ const styles = StyleSheet.create({
         height: 54,
         width: 54,
         borderRadius: 27,
-        marginBottom: 5
+        marginBottom: 5,
+        backgroundColor: 'white'
     },
     nick: {
         color: 'white',
@@ -56,3 +92,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     }
 });
+
+export default ChatSingle;
